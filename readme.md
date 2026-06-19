@@ -20,8 +20,8 @@ project_1/
 |-- main.py                         # FastAPI application
 |-- README.md                       # Project documentation
 |-- fetch_california_housing.xlsx   # Dataset used for the project
-|-- house_model.joblib              # Saved trained model
-|-- house_features.joblib           # Saved model feature names
+|-- house_model.joblib              # Saved trained model generated from explore.ipynb
+|-- house_features.joblib           # Saved model feature names generated from explore.ipynb
 |-- test_houses.csv                 # Sample CSV file for batch prediction
 |-- explore.ipynb                   # Notebook for data exploration/training work
 ```
@@ -38,13 +38,14 @@ project_1/
 
 ## How The Project Works
 
-1. The trained machine learning model is saved in `house_model.joblib`.
-2. The model feature names are saved in `house_features.joblib`.
-3. `main.py` loads both files when the API starts.
-4. The user sends housing feature values to the API.
-5. The API converts the input into a Pandas DataFrame.
-6. The model predicts the house price.
-7. The API returns the prediction as a JSON response or downloadable CSV file.
+1. Run `explore.ipynb` to explore the data and train the model.
+2. The notebook generates `house_model.joblib` for the trained model.
+3. The notebook generates `house_features.joblib` for the model feature names.
+4. `main.py` loads both files when the API starts.
+5. The user sends housing feature values to the API.
+6. The API converts the input into a Pandas DataFrame.
+7. The model predicts the house price.
+8. The API returns the prediction as a JSON response or downloadable CSV file.
 
 ## Model Input Features
 
@@ -146,6 +147,17 @@ Install dependencies if they are not already installed:
 pip install fastapi uvicorn pandas scikit-learn joblib python-multipart openpyxl
 ```
 
+Generate the model files by running all cells in `explore.ipynb`.
+
+This notebook should create these files in the same `project_1` folder:
+
+```text
+house_model.joblib
+house_features.joblib
+```
+
+In VS Code, open `explore.ipynb` and click `Run All`. After it finishes, confirm both `.joblib` files are present before starting the API.
+
 Run the API:
 
 ```powershell
@@ -180,6 +192,8 @@ Then test:
 4. `POST /predict_file` to upload `test_houses.csv` and download predictions.
 
 ## Important Notes
+
+Run `explore.ipynb` before starting the API if `house_model.joblib` or `house_features.joblib` are missing.
 
 Run the server from inside the `project_1` folder. The API loads `house_model.joblib` and `house_features.joblib` using relative paths, so running the command from another folder may cause file loading errors.
 
