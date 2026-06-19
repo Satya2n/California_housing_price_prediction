@@ -24,8 +24,6 @@ project_1/
 |-- house_features.joblib           # Saved model feature names
 |-- test_houses.csv                 # Sample CSV file for batch prediction
 |-- explore.ipynb                   # Notebook for data exploration/training work
-|-- text.md                         # Rough project notes
-`-- __pycache__/                    # Python cache folder
 ```
 
 ## Tech Stack
